@@ -27,3 +27,18 @@ The same program and smoke script were run against `solana-test-validator`
 (agave 4.4.1) with the program loaded at the reserved id. Signatures are in
 `docs/SMOKE_localnet.json` and the log is `docs/SMOKE_localnet_output.txt`.
 These are **localnet** signatures, not devnet.
+
+## Proof-of-work faucet check (19 Nov 2026, ~21:05 UK)
+
+- `cargo install devnet-pow` (v0.1.4) fails to build on current Rust: it pins
+  Solana 1.10/1.14 crates and an old `wasm-bindgen` ("older versions of the
+  `wasm-bindgen` crate are incompatible with current versions of Rust").
+- The on-chain PoW faucet program `PoWSNH2hEZogtCg1Zgm51FnkmJperzYDgPK4fvs8taL`
+  has 24 faucet specs on devnet. All of their source accounts are empty
+  except one that pays 100 lamports per solution (0.9997 SOL left) and one
+  that holds 0.0009 SOL. Every useful faucet (0.01–1 SOL rewards) is drained,
+  and claiming also needs the payer to have SOL for fees. The PoW route is dead.
+- Other keyless HTTP faucets checked: solfaucet.com (front end for the closed
+  public RPC faucet), Pine Stake (GitHub sign-in + Turnstile), Blueshift
+  (wallet connect, NFT holders), QuickNode/Alchemy (mainnet balance and bot
+  check), Jumpbit (no login, but 0.1 SOL per day, too little for a deploy).
