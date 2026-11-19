@@ -1,0 +1,14 @@
+{
+  "name": "lmsr-sol-scripts",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "smoke": "tsx smoke.ts"
+  },
+  "dependencies": {
+    "@solana/spl-token": "^0.4.9",
+    "@solana/web3.js": "^1.98.0",
+    "tsx": "^4.19.0"
+  }
+}

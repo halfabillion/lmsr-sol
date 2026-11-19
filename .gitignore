@@ -1,0 +1,15 @@
+# Build output
+target/
+node_modules/
+test-ledger/
+# Keys and secrets: never commit
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!math/tests/vectors.json
+.secrets/
+*.key
+*.pem
+.env
+!docs/SMOKE_*.json

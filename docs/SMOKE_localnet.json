@@ -1,0 +1,36 @@
+{
+  "cluster": "localnet",
+  "rpc": "http://127.0.0.1:8899",
+  "program_id": "7uKjZAG4m5vFd77rWD1kasKV2YwQrzSaHeeFM6a7NWsz",
+  "payer": "HKJhkAZdkdNAmET7JoLHyTmDioka3CGYdajqaM31Wdgd",
+  "mint": "FBoi9BNXhGe8BYedbNdaNegSXkw6314u5ZbpKza2BaZ7",
+  "market": "Enm9tBgMuSy8Epj9r1KVU65o9S41h2SMqk4LS5AdUzGM",
+  "vault": "B1sA3KyjAzqJ5KFjvxEySqLNbevhftpJwLcE6R1qJKQu",
+  "market_id": "1795121104774",
+  "subsidy_base_units": "109861229",
+  "round_trip": {
+    "paid": "15181215",
+    "got_back": "15181214",
+    "net": "-1"
+  },
+  "redeemed": "25000000",
+  "signatures": {
+    "mint_to": "4JMFbWmZkxuNRXT2VLJWLJpWEUU75CyUXfBu9sXrWPe9Ew8ooNX3M2uh7EtarrWswU5Tj53byXopGvDLxz3qZnCt",
+    "create_market": "3rVeqoNaFPeJ9CDErKKyfqRnph7NDFQuMYxpBrxVDPdderzzi91MYGQnhUrM3PNGRQVGXzwEvX7nYRxrd8kGuu8",
+    "buy": "4TsvTpH3eCZMF5GavjhJgmig6jiwKzUoBTUDwULPThCQLED6EHKfUxSmah639Ftg67SMshx2wz2zM8B6M3tavhfP",
+    "sell": "25AVkGbcJ6w8di7NyC8266jcg5Loq5gay7yQBAbMNEstfM1WYRuoLaELo9X6Vs2c6s4Wm49qfc5QrCXYkLibEF11",
+    "buy_again": "2sPB8CohthTRxLfafrutRc2QAo6DWYokpsyrRwPP9iQkTv8Buscas7m6M417cqzVkJQ43x9JFcdRZfboLmsTHotg",
+    "resolve": "55hCfyyoqof21F58SrHLAZoxo2qfHjSAw39URvjv8BUr8XGa2bWGdbSJz51vPtyTE9o3C7rEnhTxBHMUaNUnwRST",
+    "redeem": "coBRE7BL7VkwKMNdg3BmhsDoAUK2LCsZ8tvdNYBozcBvYbKcuA1N2E4aoHnciGHHBYrGafCzHosnxCKF6akiZ7u"
+  },
+  "explorer": {
+    "mint_to": "https://explorer.solana.com/tx/4JMFbWmZkxuNRXT2VLJWLJpWEUU75CyUXfBu9sXrWPe9Ew8ooNX3M2uh7EtarrWswU5Tj53byXopGvDLxz3qZnCt?cluster=custom",
+    "create_market": "https://explorer.solana.com/tx/3rVeqoNaFPeJ9CDErKKyfqRnph7NDFQuMYxpBrxVDPdderzzi91MYGQnhUrM3PNGRQVGXzwEvX7nYRxrd8kGuu8?cluster=custom",
+    "buy": "https://explorer.solana.com/tx/4TsvTpH3eCZMF5GavjhJgmig6jiwKzUoBTUDwULPThCQLED6EHKfUxSmah639Ftg67SMshx2wz2zM8B6M3tavhfP?cluster=custom",
+    "sell": "https://explorer.solana.com/tx/25AVkGbcJ6w8di7NyC8266jcg5Loq5gay7yQBAbMNEstfM1WYRuoLaELo9X6Vs2c6s4Wm49qfc5QrCXYkLibEF11?cluster=custom",
+    "buy_again": "https://explorer.solana.com/tx/2sPB8CohthTRxLfafrutRc2QAo6DWYokpsyrRwPP9iQkTv8Buscas7m6M417cqzVkJQ43x9JFcdRZfboLmsTHotg?cluster=custom",
+    "resolve": "https://explorer.solana.com/tx/55hCfyyoqof21F58SrHLAZoxo2qfHjSAw39URvjv8BUr8XGa2bWGdbSJz51vPtyTE9o3C7rEnhTxBHMUaNUnwRST?cluster=custom",
+    "redeem": "https://explorer.solana.com/tx/coBRE7BL7VkwKMNdg3BmhsDoAUK2LCsZ8tvdNYBozcBvYbKcuA1N2E4aoHnciGHHBYrGafCzHosnxCKF6akiZ7u?cluster=custom"
+  },
+  "at": "2026-11-19T20:45:07.288Z"
+}

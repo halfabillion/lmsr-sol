@@ -1,0 +1,26 @@
+[package]
+name = "lmsr-sol"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+description = "N-outcome LMSR prediction-market maker as a native Solana program"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[features]
+no-entrypoint = []
+
+[dependencies]
+lmsr-math = { path = "../math" }
+solana-program = "2.3"
+
+[dev-dependencies]
+litesvm = "0.18"
+solana-keypair = "3.1"
+solana-signer = "3"
+solana-transaction = "4.3"
+solana-message = "4.6"
+solana-instruction = "3.5"
+solana-address = "2.7"
+solana-account = "4.7"
