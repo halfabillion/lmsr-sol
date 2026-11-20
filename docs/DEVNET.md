@@ -6,8 +6,30 @@
 | Payer (box wallet) | `HKJhkAZdkdNAmET7JoLHyTmDioka3CGYdajqaM31Wdgd` |
 | Program size | 84,320 bytes (was 85,944), sha256 `249abfa22f5203a7020225ef73125c75508c7ebc49a5d023d9f25db1f6b0e91b` |
 | Devnet SOL needed | **≈ 0.4305 SOL to deploy + ≈ 0.0075 SOL for the smoke test ≈ 0.438 SOL** (details below) |
-| Devnet deploy | **Pending devnet SOL** (balance 0 on 20 Nov 2026 12:43 UK) |
+| Devnet deploy | **Deployed 20 Nov 2026 ~15:30 UK**, tx [`3wAGJFchQSmug7ug…`](https://explorer.solana.com/tx/3wAGJFchQSmug7ugCqCys44jdwpKJhWcdMpZrGeH8Y4K1Yh8B8udUT7G9pEuVFRARiragZE6W9g7hsq9HSa4YCM5?cluster=devnet), slot 524398076 |
+| Devnet smoke | Done, all 7 transactions finalized, see `docs/SMOKE_devnet.json` |
 | Localnet deploy + smoke | Done 20 Nov 2026, see `docs/SMOKE_localnet.json` |
+
+## Devnet deploy (20 Nov 2026)
+
+Funding: **5 devnet SOL from faucet.solana.com (GitHub sign-in), 20 Nov 2026 ~15:29 UK**
+to `HKJhkAZdkdNAmET7JoLHyTmDioka3CGYdajqaM31Wdgd`.
+
+| Step | Payer balance (SOL) |
+|---|---|
+| After faucet claim | 5.00000000 |
+| After deploy (program data 0.42922444 + program account + fees) | 4.56950244 |
+| After smoke test (mint, token account, market, vault, position, fees) | 4.56207628 |
+
+Total used: 0.43792372 SOL, in line with the ≈0.438 SOL estimate below. No
+leftover write buffer. The on-chain program bytes match the local build
+(84,320 bytes, sha256 `249abfa2…6b0e91b`). Program:
+[7uKjZAG4m5vFd77rWD1kasKV2YwQrzSaHeeFM6a7NWsz](https://explorer.solana.com/address/7uKjZAG4m5vFd77rWD1kasKV2YwQrzSaHeeFM6a7NWsz?cluster=devnet), program data `FqdHAJL8iphPjD5TTQ4gLNt9Ap6NgdbMtH1NG3wCc8rL`,
+upgrade authority = the box wallet. Cluster version 4.5.0-beta.0.
+
+The smoke test ran the same flow as on localnet with the same results: subsidy
+109,861,229 base units, 40-share round trip paid 15,181,215 and returned
+15,181,214 (net −1, maker-protective), 25 winning shares redeemed for 25,000,000.
 
 ## Size cut (20 Nov 2026)
 
@@ -64,7 +86,13 @@ Smoke test accounts on devnet: mint 1,066,800 + token account 1,488,440 + market
 (0.0075 SOL). `scripts/deploy-devnet.sh` refuses to start below 0.438 SOL
 (`MIN_LAMPORTS`).
 
-## Jumpbit faucet claims
+## Faucet claims
+
+| Time (UK) | Source | Amount | Balance after |
+|---|---|---|---|
+| 20 Nov 2026 ~15:29 | faucet.solana.com (GitHub sign-in) | 5 SOL | 5 SOL |
+
+### Jumpbit
 
 The Jumpbit devnet faucet (page https://jumpbit.io/en/solana/devnet-faucet) has
 no login and no captcha. The page calls

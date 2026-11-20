@@ -1,0 +1,87 @@
+{
+  "cluster": "devnet",
+  "rpc": "https://api.devnet.solana.com",
+  "validator_version": "4.5.0-beta.0",
+  "program_id": "7uKjZAG4m5vFd77rWD1kasKV2YwQrzSaHeeFM6a7NWsz",
+  "program_owner": "BPFLoaderUpgradeab1e11111111111111111111111",
+  "program_executable": true,
+  "deploy": {
+    "method": "scripts/deploy-devnet.sh: solana program deploy (BPF upgradeable loader, default max-len = program length, explicit buffer keypair)",
+    "signature": "3wAGJFchQSmug7ugCqCys44jdwpKJhWcdMpZrGeH8Y4K1Yh8B8udUT7G9pEuVFRARiragZE6W9g7hsq9HSa4YCM5",
+    "slot": 524398076,
+    "explorer": "https://explorer.solana.com/tx/3wAGJFchQSmug7ugCqCys44jdwpKJhWcdMpZrGeH8Y4K1Yh8B8udUT7G9pEuVFRARiragZE6W9g7hsq9HSa4YCM5?cluster=devnet",
+    "program_explorer": "https://explorer.solana.com/address/7uKjZAG4m5vFd77rWD1kasKV2YwQrzSaHeeFM6a7NWsz?cluster=devnet",
+    "programdata": "FqdHAJL8iphPjD5TTQ4gLNt9Ap6NgdbMtH1NG3wCc8rL",
+    "authority": "HKJhkAZdkdNAmET7JoLHyTmDioka3CGYdajqaM31Wdgd",
+    "so_bytes": 84320,
+    "so_sha256": "249abfa22f5203a7020225ef73125c75508c7ebc49a5d023d9f25db1f6b0e91b",
+    "onchain_bytes_match_build": true,
+    "payer_sol_before_deploy": 5.0,
+    "payer_sol_after_deploy": 4.56950244,
+    "programdata_rent_sol": 0.42922444
+  },
+  "confirmations": {
+    "checked_with": "getSignatureStatuses(searchTransactionHistory=true) on api.devnet.solana.com",
+    "all_finalized": true,
+    "errors": 0,
+    "slots": {
+      "deploy": 524398076,
+      "mint_to": 524398096,
+      "create_market": 524398100,
+      "buy": 524398104,
+      "sell": 524398108,
+      "buy_again": 524398112,
+      "resolve": 524398116,
+      "redeem": 524398120
+    }
+  },
+  "payer": "HKJhkAZdkdNAmET7JoLHyTmDioka3CGYdajqaM31Wdgd",
+  "mint": "7MXxsfU3KcRijAW3r551c54AbXMMy8aLwQ3XQ4yUBuAC",
+  "market": "5paPuX85QgseyNnsm3i8QwSi7gZicQtdHriga19W3zm4",
+  "vault": "5rS8YbVTmkZjWJPjJNAJLpKFwQhPPVPSQB2MzkVaAWuJ",
+  "market_id": "1795188653033",
+  "subsidy_base_units": "109861229",
+  "round_trip": {
+    "shares": "40000000",
+    "outcome": 0,
+    "paid": "15181215",
+    "got_back": "15181214",
+    "net": "-1"
+  },
+  "redeemed": "25000000",
+  "balances": {
+    "payer_sol_start": 4.56950244,
+    "payer_sol_end": 4.56207628,
+    "token_base_units": {
+      "minted": "10000000000",
+      "after_create_market": "9890138771",
+      "after_buy": "9874957556",
+      "after_sell": "9890138770",
+      "before_redeem": "9881093005",
+      "after_redeem": "9906093005"
+    },
+    "vault_base_units": {
+      "after_create": "109861229",
+      "end": "93906995"
+    }
+  },
+  "signatures": {
+    "mint_to": "2XQRrxCh8epZJax2pdMV3uqnYDmVvf9oJErwc9fyba2drXEm3hNzjDBZCJ54A8oiPYWMyc9YrEFgmYDyARzasvoc",
+    "create_market": "24FAHPzpn4sgLUEpZDaxZShpyEB6GhK3RTytniS4SazWoJ6Saf2NFoD8MjMqKGdD8zzeRMktKBEptuUEtWX5AEEV",
+    "buy": "4RmDoD7shYvQkhrv728M3QCWxcKfX9NwSG4AKoraYxw4KWDizh72kLHQY6kGrY6EWp2TDUEZeUaksNf6C3M4U4p9",
+    "sell": "p9SW8gHcTA9U2fg37r2NiAZHqwXQawvqe2B164jeNrn1VfDSZp4NK5mfsfZUDRYX6t4zFDDUTuSqEqacsNZ1XWY",
+    "buy_again": "5tkAjQ2MksxyzFs7Sou8LJBLC1oYqjDSLf8zCNgqEL9i9Cv7BiRZpZZQdjZQnyJqQUkBiCXdMNqxwD3HygwRHYhQ",
+    "resolve": "2LqEGVmmzLxiR2H4WcckgD6htZUsUaSD8xyMtAo4vPK2jKGDuRC3tRvhSTzHtuHaEQUgQ8DrhPgTjUAcEvgcTR6n",
+    "redeem": "2PBufyDh7yvufq9ChRkbFWjfVERs7ueAp1ycLqYTTL4iE9pzNxnmda3ZyjNbRfKHm24j488PvLormTrAvcgN4iJ7"
+  },
+  "explorer": {
+    "mint_to": "https://explorer.solana.com/tx/2XQRrxCh8epZJax2pdMV3uqnYDmVvf9oJErwc9fyba2drXEm3hNzjDBZCJ54A8oiPYWMyc9YrEFgmYDyARzasvoc?cluster=devnet",
+    "create_market": "https://explorer.solana.com/tx/24FAHPzpn4sgLUEpZDaxZShpyEB6GhK3RTytniS4SazWoJ6Saf2NFoD8MjMqKGdD8zzeRMktKBEptuUEtWX5AEEV?cluster=devnet",
+    "buy": "https://explorer.solana.com/tx/4RmDoD7shYvQkhrv728M3QCWxcKfX9NwSG4AKoraYxw4KWDizh72kLHQY6kGrY6EWp2TDUEZeUaksNf6C3M4U4p9?cluster=devnet",
+    "sell": "https://explorer.solana.com/tx/p9SW8gHcTA9U2fg37r2NiAZHqwXQawvqe2B164jeNrn1VfDSZp4NK5mfsfZUDRYX6t4zFDDUTuSqEqacsNZ1XWY?cluster=devnet",
+    "buy_again": "https://explorer.solana.com/tx/5tkAjQ2MksxyzFs7Sou8LJBLC1oYqjDSLf8zCNgqEL9i9Cv7BiRZpZZQdjZQnyJqQUkBiCXdMNqxwD3HygwRHYhQ?cluster=devnet",
+    "resolve": "https://explorer.solana.com/tx/2LqEGVmmzLxiR2H4WcckgD6htZUsUaSD8xyMtAo4vPK2jKGDuRC3tRvhSTzHtuHaEQUgQ8DrhPgTjUAcEvgcTR6n?cluster=devnet",
+    "redeem": "https://explorer.solana.com/tx/2PBufyDh7yvufq9ChRkbFWjfVERs7ueAp1ycLqYTTL4iE9pzNxnmda3ZyjNbRfKHm24j488PvLormTrAvcgN4iJ7?cluster=devnet"
+  },
+  "at": "2026-11-20T15:30:59.187Z"
+}

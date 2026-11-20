@@ -92,7 +92,27 @@ To regenerate the reference vectors: `python3 scripts/vectors.py`.
 
 ## Devnet
 
-Status and addresses: see [`docs/DEVNET.md`](docs/DEVNET.md).
+**Deployed to Solana devnet on 20 Nov 2026.**
+
+| | |
+|---|---|
+| Program id | [`7uKjZAG4m5vFd77rWD1kasKV2YwQrzSaHeeFM6a7NWsz`](https://explorer.solana.com/address/7uKjZAG4m5vFd77rWD1kasKV2YwQrzSaHeeFM6a7NWsz?cluster=devnet) |
+| Deploy transaction | [`3wAGJFchQSmug7ug…`](https://explorer.solana.com/tx/3wAGJFchQSmug7ugCqCys44jdwpKJhWcdMpZrGeH8Y4K1Yh8B8udUT7G9pEuVFRARiragZE6W9g7hsq9HSa4YCM5?cluster=devnet) |
+| Smoke test (create, buy, sell, buy, resolve, redeem) | [`docs/SMOKE_devnet.json`](docs/SMOKE_devnet.json), every transaction finalized |
+
+Smoke transactions on devnet:
+- mint_to: [`2XQRrxCh8epZJax2…`](https://explorer.solana.com/tx/2XQRrxCh8epZJax2pdMV3uqnYDmVvf9oJErwc9fyba2drXEm3hNzjDBZCJ54A8oiPYWMyc9YrEFgmYDyARzasvoc?cluster=devnet)
+- create_market: [`24FAHPzpn4sgLUEp…`](https://explorer.solana.com/tx/24FAHPzpn4sgLUEpZDaxZShpyEB6GhK3RTytniS4SazWoJ6Saf2NFoD8MjMqKGdD8zzeRMktKBEptuUEtWX5AEEV?cluster=devnet)
+- buy: [`4RmDoD7shYvQkhrv…`](https://explorer.solana.com/tx/4RmDoD7shYvQkhrv728M3QCWxcKfX9NwSG4AKoraYxw4KWDizh72kLHQY6kGrY6EWp2TDUEZeUaksNf6C3M4U4p9?cluster=devnet)
+- sell: [`p9SW8gHcTA9U2fg3…`](https://explorer.solana.com/tx/p9SW8gHcTA9U2fg37r2NiAZHqwXQawvqe2B164jeNrn1VfDSZp4NK5mfsfZUDRYX6t4zFDDUTuSqEqacsNZ1XWY?cluster=devnet)
+- buy_again: [`5tkAjQ2MksxyzFs7…`](https://explorer.solana.com/tx/5tkAjQ2MksxyzFs7Sou8LJBLC1oYqjDSLf8zCNgqEL9i9Cv7BiRZpZZQdjZQnyJqQUkBiCXdMNqxwD3HygwRHYhQ?cluster=devnet)
+- resolve: [`2LqEGVmmzLxiR2H4…`](https://explorer.solana.com/tx/2LqEGVmmzLxiR2H4WcckgD6htZUsUaSD8xyMtAo4vPK2jKGDuRC3tRvhSTzHtuHaEQUgQ8DrhPgTjUAcEvgcTR6n?cluster=devnet)
+- redeem: [`2PBufyDh7yvufq9C…`](https://explorer.solana.com/tx/2PBufyDh7yvufq9ChRkbFWjfVERs7ueAp1ycLqYTTL4iE9pzNxnmda3ZyjNbRfKHm24j488PvLormTrAvcgN4iJ7?cluster=devnet)
+
+The test collateral is a fresh 6-decimal test SPL mint created by the smoke
+script, not a real token. Details, costs and funding notes: [`docs/DEVNET.md`](docs/DEVNET.md).
+
+To redeploy or reproduce:
 
 ```bash
 cd scripts && npm install && cd ..
