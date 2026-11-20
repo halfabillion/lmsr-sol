@@ -1,134 +1,60 @@
 # lmsr-sol full test output
-# Generated 19 Nov 2026 20:45 GMT on the build box
+# Generated 20 Nov 2026 12:42 GMT on the build box
 # Commands: cargo build-sbf --manifest-path program/Cargo.toml && cargo test --release --workspace -- --nocapture
 # rustc: rustc 1.100.0 (0ef1bc386 2026-11-09) | cargo-build-sbf 4.5.0 | solana-cli 4.4.1 (src:c0150732; feat:9fd5a0b5, client:Agave)
+# release profile: opt-level="z", lto="fat", codegen-units=1, overflow-checks=true
 
-[2026-11-19T20:45:28.597596053Z WARN  cargo_build_sbf] Package 'lmsr-sol' has two crate types defined: cdylib and lib. This setting precludes link-time optimizations (LTO). Use cdylib for programs to be deployed and rlib for packages to be imported by other programs as libraries.
-    Finished `release` profile [optimized] target(s) in 0.31s
-sha256 e0cce670ef58c3fbde8ec1161964d32308389b56df661f02ff50840ef981c9dc  target/deploy/lmsr_sol.so
+[2026-11-20T12:42:55.166117856Z WARN  cargo_build_sbf] Package 'lmsr-sol' has two crate types defined: cdylib and lib. This setting precludes link-time optimizations (LTO). Use cdylib for programs to be deployed and rlib for packages to be imported by other programs as libraries.
+Error: Function _RINvMNtCsjZGz5XvoEKN_12hybrid_array7from_fnINtB5_5ArrayhINtNtCs8T4jxesor0h_7typenum4uint4UIntIBT_IBT_IBT_IBT_IBT_IBT_IBT_IBT_IBT_IBT_IBT_IBT_IBT_NtBV_5UTermNtNtBX_3bit2B1ENtB2w_2B0EB2J_EB2J_EB2J_EB2J_EB2J_EB2J_EB2J_EB2J_EB2J_EB2J_EB2J_EB2J_EE11try_from_fnNtNtCskXIvWxbO49l_4core7convert10InfallibleNCINvB2_7from_fnNCNvXsg_B5_BF_NtNtB49_7default7Default7default0E0ECs6EMcIKwYZTW_13crypto_common overflows the maximum allowed frame space by accessing an offset 4096 bytes greater than the maximum of 4096. Please, minimize large stack variables. Estimated function frame size: 8192 bytes. Exceeding the maximum stack offset may cause undefined behavior during execution.
 
-   Compiling once_cell v1.21.4
-   Compiling getrandom v0.4.3
-   Compiling bitflags v2.13.2
-   Compiling wait-timeout v0.2.1
-   Compiling chacha20 v0.10.2
-   Compiling rand_xorshift v0.5.0
-   Compiling crypto-common v0.2.2
-   Compiling rand v0.10.4
-   Compiling crypto-bigint v0.7.11
-   Compiling ahash v0.8.12
-   Compiling solana-instructions-sysvar v4.0.0
-   Compiling solana-packet v4.3.0
-   Compiling rustix v1.1.6
-   Compiling solana-transaction-context v4.3.2
-   Compiling hashbrown v0.13.2
-   Compiling ark-poly v0.5.0
-   Compiling digest v0.11.3
-   Compiling sha2 v0.11.1
-   Compiling blake3 v1.8.7
-   Compiling borsh v0.10.4
-   Compiling ark-poly v0.4.2
-   Compiling solana-message v4.6.0
-   Compiling solana-pubkey v2.4.0
-   Compiling solana-ed25519 v0.2.4
-   Compiling solana-instruction v2.3.3
-   Compiling solana-sdk-ids v2.2.1
-   Compiling ark-ec v0.5.0
-   Compiling solana-sysvar-id v2.2.1
-   Compiling hmac v0.13.0
-   Compiling solana-clock v2.2.3
-   Compiling solana-program-error v2.2.2
-   Compiling solana-system-interface v1.0.0
-   Compiling ark-ec v0.4.2
-   Compiling solana-account-info v2.3.0
-   Compiling elliptic-curve v0.14.3
-   Compiling primefield v0.14.0
-   Compiling solana-signature v3.5.2
-   Compiling solana-signer v3.0.1
-   Compiling wnaf v0.14.1
-   Compiling solana-transaction v4.3.0
-   Compiling solana-keypair v3.1.2
-   Compiling rfc6979 v0.6.0
-   Compiling solana-svm-transaction v5.0.0
-   Compiling agave-feature-set v4.3.2
-   Compiling solana-program-runtime v4.3.2
-   Compiling signature v3.0.0
-   Compiling primeorder v0.14.0
-   Compiling solana-serialize-utils v2.2.1
-   Compiling ecdsa v0.17.0
-   Compiling solana-rent v2.2.1
-   Compiling solana-slot-hashes v2.2.1
-   Compiling solana-cpi v2.2.1
-   Compiling ark-bn254 v0.5.0
-   Compiling ark-bn254 v0.4.0
-   Compiling solana-transaction-error v2.2.1
-   Compiling solana-bincode v2.2.1
-   Compiling solana-blake3-hasher v3.1.0
-   Compiling solana-message v2.4.0
-   Compiling solana-builtins-default-costs v4.3.2
-   Compiling solana-stake-interface v1.2.1
-   Compiling light-poseidon v0.2.0
-   Compiling k256 v0.14.0
-   Compiling light-poseidon v0.4.1
-   Compiling solana-bn254 v3.2.1
-   Compiling solana-address-lookup-table-interface v2.2.2
-   Compiling solana-secp256k1-recover v3.3.1
-   Compiling solana-poseidon v4.0.0
-   Compiling solana-compute-budget v4.3.2
-   Compiling solana-instructions-sysvar v2.2.2
-   Compiling solana-zk-sdk v7.0.1
-   Compiling solana-program-entrypoint v2.3.0
-   Compiling solana-syscalls v4.3.2
-   Compiling solana-account v2.2.1
-   Compiling solana-epoch-schedule v2.2.1
-   Compiling solana-last-restart-slot v2.2.1
-   Compiling solana-epoch-rewards v2.2.1
-   Compiling solana-slot-history v2.2.1
-   Compiling tempfile v3.27.0
-   Compiling solana-nonce v2.2.1
-   Compiling solana-example-mocks v2.2.1
-   Compiling solana-bpf-loader-program v4.3.2
-   Compiling rusty-fork v0.3.1
-   Compiling solana-sysvar v2.3.0
-   Compiling solana-zk-elgamal-proof-program v4.3.2
-   Compiling solana-feature-gate-interface v2.2.2
-   Compiling solana-compute-budget-instruction v4.3.2
-   Compiling solana-vote-program v4.3.2
-   Compiling solana-compute-budget-program v4.3.2
-   Compiling solana-system-program v4.3.2
-   Compiling solana-zk-token-proof-program v4.3.2
-   Compiling solana-vote-interface v2.2.6
-   Compiling agave-transaction-view v6.1.0
-   Compiling solana-loader-v3-interface v5.0.0
-   Compiling solana-loader-v4-interface v2.2.1
-   Compiling solana-program-pack v2.2.1
-   Compiling solana-loader-v2-interface v2.2.1
-   Compiling solana-stable-layout v2.2.1
-   Compiling solana-borsh v2.2.1
-   Compiling solana-blake3-hasher v2.2.1
-   Compiling solana-builtins v4.3.2
-   Compiling solana-runtime-transaction v4.3.2
-   Compiling proptest v1.12.0
-   Compiling agave-reserved-account-keys v4.3.2
-   Compiling solana-fee v4.3.2
-   Compiling litesvm v0.18.2
-   Compiling solana-program v2.3.0
+Error: Function _RNvXs25_NtCs6EMcIKwYZTW_13crypto_common6hazmatAtj800_NtB6_17SerializableState11deserialize overflows the maximum allowed frame space by accessing an offset 128 bytes greater than the maximum of 4096. Please, minimize large stack variables. Estimated function frame size: 4224 bytes. Exceeding the maximum stack offset may cause undefined behavior during execution.
+
+Error: Function _RNvXs25_NtCs6EMcIKwYZTW_13crypto_common6hazmatAtj800_NtB6_17SerializableState9serialize overflows the maximum allowed frame space by accessing an offset 128 bytes greater than the maximum of 4096. Please, minimize large stack variables. Estimated function frame size: 4224 bytes. Exceeding the maximum stack offset may cause undefined behavior during execution.
+
+Error: Function _RNvXs26_NtCs6EMcIKwYZTW_13crypto_common6hazmatAtj1000_NtB6_17SerializableState11deserialize overflows the maximum allowed frame space by accessing an offset 4224 bytes greater than the maximum of 4096. Please, minimize large stack variables. Estimated function frame size: 8320 bytes. Exceeding the maximum stack offset may cause undefined behavior during execution.
+
+Error: Function _RNvXs26_NtCs6EMcIKwYZTW_13crypto_common6hazmatAtj1000_NtB6_17SerializableState9serialize overflows the maximum allowed frame space by accessing an offset 4224 bytes greater than the maximum of 4096. Please, minimize large stack variables. Estimated function frame size: 8320 bytes. Exceeding the maximum stack offset may cause undefined behavior during execution.
+
+Error: Function _RNvXs2P_NtCs6EMcIKwYZTW_13crypto_common6hazmatAyj200_NtB6_17SerializableState11deserialize overflows the maximum allowed frame space by accessing an offset 128 bytes greater than the maximum of 4096. Please, minimize large stack variables. Estimated function frame size: 4224 bytes. Exceeding the maximum stack offset may cause undefined behavior during execution.
+
+Error: Function _RNvXs2P_NtCs6EMcIKwYZTW_13crypto_common6hazmatAyj200_NtB6_17SerializableState9serialize overflows the maximum allowed frame space by accessing an offset 128 bytes greater than the maximum of 4096. Please, minimize large stack variables. Estimated function frame size: 4224 bytes. Exceeding the maximum stack offset may cause undefined behavior during execution.
+
+Error: Function _RNvXs2Q_NtCs6EMcIKwYZTW_13crypto_common6hazmatAyj400_NtB6_17SerializableState11deserialize overflows the maximum allowed frame space by accessing an offset 4224 bytes greater than the maximum of 4096. Please, minimize large stack variables. Estimated function frame size: 8320 bytes. Exceeding the maximum stack offset may cause undefined behavior during execution.
+
+Error: Function _RNvXs2Q_NtCs6EMcIKwYZTW_13crypto_common6hazmatAyj400_NtB6_17SerializableState9serialize overflows the maximum allowed frame space by accessing an offset 4224 bytes greater than the maximum of 4096. Please, minimize large stack variables. Estimated function frame size: 8320 bytes. Exceeding the maximum stack offset may cause undefined behavior during execution.
+
+Error: Function _RNvXs2w_NtCs6EMcIKwYZTW_13crypto_common6hazmatAmj400_NtB6_17SerializableState11deserialize overflows the maximum allowed frame space by accessing an offset 128 bytes greater than the maximum of 4096. Please, minimize large stack variables. Estimated function frame size: 4224 bytes. Exceeding the maximum stack offset may cause undefined behavior during execution.
+
+Error: Function _RNvXs2w_NtCs6EMcIKwYZTW_13crypto_common6hazmatAmj400_NtB6_17SerializableState9serialize overflows the maximum allowed frame space by accessing an offset 128 bytes greater than the maximum of 4096. Please, minimize large stack variables. Estimated function frame size: 4224 bytes. Exceeding the maximum stack offset may cause undefined behavior during execution.
+
+Error: Function _RNvXs2x_NtCs6EMcIKwYZTW_13crypto_common6hazmatAmj800_NtB6_17SerializableState11deserialize overflows the maximum allowed frame space by accessing an offset 4224 bytes greater than the maximum of 4096. Please, minimize large stack variables. Estimated function frame size: 8320 bytes. Exceeding the maximum stack offset may cause undefined behavior during execution.
+
+Error: Function _RNvXs2x_NtCs6EMcIKwYZTW_13crypto_common6hazmatAmj800_NtB6_17SerializableState9serialize overflows the maximum allowed frame space by accessing an offset 4224 bytes greater than the maximum of 4096. Please, minimize large stack variables. Estimated function frame size: 8320 bytes. Exceeding the maximum stack offset may cause undefined behavior during execution.
+
+Error: Function _RNvXs34_NtCs6EMcIKwYZTW_13crypto_common6hazmatAoj100_NtB6_17SerializableState11deserialize overflows the maximum allowed frame space by accessing an offset 128 bytes greater than the maximum of 4096. Please, minimize large stack variables. Estimated function frame size: 4224 bytes. Exceeding the maximum stack offset may cause undefined behavior during execution.
+
+Error: Function _RNvXs35_NtCs6EMcIKwYZTW_13crypto_common6hazmatAoj200_NtB6_17SerializableState11deserialize overflows the maximum allowed frame space by accessing an offset 4224 bytes greater than the maximum of 4096. Please, minimize large stack variables. Estimated function frame size: 8320 bytes. Exceeding the maximum stack offset may cause undefined behavior during execution.
+
+Error: Function _RNvXs35_NtCs6EMcIKwYZTW_13crypto_common6hazmatAoj200_NtB6_17SerializableState9serialize overflows the maximum allowed frame space by accessing an offset 128 bytes greater than the maximum of 4096. Please, minimize large stack variables. Estimated function frame size: 4224 bytes. Exceeding the maximum stack offset may cause undefined behavior during execution.
+
+    Finished `release` profile [optimized] target(s) in 0.28s
+size 84320 bytes, sha256 249abfa22f5203a7020225ef73125c75508c7ebc49a5d023d9f25db1f6b0e91b  target/deploy/lmsr_sol.so
+
    Compiling lmsr-sol v0.1.0 (/workspace/money/hackathons/solana-perps/lmsr-sol/program)
-   Compiling lmsr-math v0.1.0 (/workspace/money/hackathons/solana-perps/lmsr-sol/math)
-    Finished `release` profile [optimized] target(s) in 38.07s
-     Running unittests src/lib.rs (target/release/build/lmsr-math/bfa3b89b5577faf0/out/lmsr_math-bfa3b89b5577faf0)
+    Finished `release` profile [optimized] target(s) in 20.94s
+     Running unittests src/lib.rs (target/release/build/lmsr-math/bafe214d029829d2/out/lmsr_math-bafe214d029829d2)
 
 running 6 tests
+test unit::exp_known_values ... ok
 test unit::dust_trades_never_pay_out ... ok
 test unit::flat_book_cost_is_b_ln_n ... ok
-test unit::rejects_bad_inputs ... ok
-test unit::exp_known_values ... ok
-test unit::unit_conversion_rounds_toward_maker ... ok
 test unit::ln_known_values ... ok
+test unit::rejects_bad_inputs ... ok
+test unit::unit_conversion_rounds_toward_maker ... ok
 
 test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/props.rs (target/release/build/lmsr-math/236cdd9d3a156a1f/out/props-236cdd9d3a156a1f)
+     Running tests/props.rs (target/release/build/lmsr-math/848ff2c243512461/out/props-848ff2c243512461)
 
 running 6 tests
 proptest: FileFailurePersistence::SourceParallel set, but failed to find lib.rs or main.rs
@@ -144,32 +70,32 @@ test costs_monotone ... ok
 test maker_loss_bounded_by_b_ln_n ... ok
 test trader_sequence_never_profits ... ok
 
-test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
 
-     Running tests/vectors.rs (target/release/build/lmsr-math/0c75bdec463b3fd5/out/vectors-0c75bdec463b3fd5)
+     Running tests/vectors.rs (target/release/build/lmsr-math/48f3573cc1f22b3b/out/vectors-48f3573cc1f22b3b)
 
 running 1 test
 test reference_vectors ... ok
 
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
 
-     Running unittests src/lib.rs (target/release/build/lmsr-sol/1c3ddb670ab2e0f1/out/lmsr_sol-1c3ddb670ab2e0f1)
+     Running unittests src/lib.rs (target/release/build/lmsr-sol/3b6bebde98136f3a/out/lmsr_sol-3b6bebde98136f3a)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/litesvm.rs (target/release/build/lmsr-sol/d8458a69eb53f623/out/litesvm-d8458a69eb53f623)
+     Running tests/litesvm.rs (target/release/build/lmsr-sol/5f5bce46efe082fd/out/litesvm-5f5bce46efe082fd)
 
 running 5 tests
-test full_lifecycle_create_buy_sell_resolve_redeem ... ok
-compute units, n=8: buy(first, creates position) = 225755, sell = 397745
+compute units, n=8: buy(first, creates position) = 247143, sell = 434735
 test compute_units_n8 ... ok
+test full_lifecycle_create_buy_sell_resolve_redeem ... ok
 test guards_and_errors ... ok
 test round_trip_on_chain_loses_money ... ok
 test random_sequences_stay_solvent_and_pay_every_winner ... ok
 
-test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.56s
 
    Doc-tests lmsr_math
 

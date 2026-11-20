@@ -25,6 +25,7 @@ use solana_program::{
     account_info::{next_account_info, AccountInfo},
     entrypoint::ProgramResult,
     instruction::{AccountMeta, Instruction},
+    log::sol_log_64,
     msg,
     program::{invoke, invoke_signed},
     program_error::ProgramError,
@@ -337,7 +338,8 @@ fn create_market(program_id: &Pubkey, accounts: &[AccountInfo], market_id: u64, 
         q: [0; MAX_OUTCOMES],
     };
     m.pack(&mut market_ai.try_borrow_mut_data()?)?;
-    msg!("lmsr: market created n={} subsidy={}", n, subsidy);
+    msg!("lmsr: market created (n, subsidy)");
+    sol_log_64(n as u64, subsidy, 0, 0, 0);
     Ok(())
 }
 
@@ -389,7 +391,8 @@ fn buy(program_id: &Pubkey, accounts: &[AccountInfo], outcome: u8, amount: u64, 
     pos.shares[i] = pos.shares[i].checked_add(amount).ok_or(LmsrError::MathOverflow)?;
     m.pack(&mut market_ai.try_borrow_mut_data()?)?;
     pos.pack(&mut pos_ai.try_borrow_mut_data()?)?;
-    msg!("lmsr: buy outcome={} shares={} cost={}", outcome, amount, cost);
+    msg!("lmsr: buy (outcome, shares, cost)");
+    sol_log_64(outcome as u64, amount, cost, 0, 0);
     Ok(())
 }
 
@@ -442,7 +445,8 @@ fn sell(program_id: &Pubkey, accounts: &[AccountInfo], outcome: u8, amount: u64,
     if payout > 0 {
         vault_transfer(&m, market_ai, vault_ai, trader_token, token_prog, payout)?;
     }
-    msg!("lmsr: sell outcome={} shares={} payout={}", outcome, amount, payout);
+    msg!("lmsr: sell (outcome, shares, payout)");
+    sol_log_64(outcome as u64, amount, payout, 0, 0);
     Ok(())
 }
 
@@ -464,7 +468,8 @@ fn resolve(program_id: &Pubkey, accounts: &[AccountInfo], winner: u8) -> Program
     m.status = STATUS_RESOLVED;
     m.winner = winner;
     m.pack(&mut market_ai.try_borrow_mut_data()?)?;
-    msg!("lmsr: resolved winner={}", winner);
+    msg!("lmsr: resolved (winner)");
+    sol_log_64(winner as u64, 0, 0, 0, 0);
     Ok(())
 }
 
@@ -498,7 +503,8 @@ fn redeem(program_id: &Pubkey, accounts: &[AccountInfo]) -> ProgramResult {
     pos.shares = [0; MAX_OUTCOMES];
     pos.pack(&mut pos_ai.try_borrow_mut_data()?)?;
     vault_transfer(&m, market_ai, vault_ai, trader_token, token_prog, payout)?;
-    msg!("lmsr: redeemed {}", payout);
+    msg!("lmsr: redeemed (payout)");
+    sol_log_64(payout, 0, 0, 0, 0);
     Ok(())
 }
 

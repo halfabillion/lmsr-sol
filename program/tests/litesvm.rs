@@ -293,5 +293,5 @@ fn compute_units_n8() {
     let buy = e.buy(&t, &ta, &m, &v, 3, 50 * UNIT, u64::MAX).unwrap();
     let sell = e.sell(&t, &ta, &m, &v, 3, 20 * UNIT, 0).unwrap();
     println!("compute units, n=8: buy(first, creates position) = {buy}, sell = {sell}");
-    assert!(buy < 1_400_000 && sell < 1_400_000);
+    assert!(buy < 600_000 && sell < 600_000, "client requests 600k CU");
 }

@@ -6,7 +6,8 @@ members = ["math", "program"]
 overflow-checks = true
 lto = "fat"
 codegen-units = 1
-opt-level = 3
+opt-level = "z"
+# strip / panic = "abort" were tried: they made the SBF .so larger (87,056 B), so they are left off.
 
 [profile.release.build-override]
 opt-level = 3

@@ -85,7 +85,7 @@ Full output of the last run: [`docs/TEST_OUTPUT.txt`](docs/TEST_OUTPUT.txt).
 | `program/tests/litesvm.rs` (5) | The compiled `.so` in LiteSVM with the real SPL Token program: full lifecycle, on-chain round trips at many sizes, seeded random 40-trade sequences for n = 2, 3, 5, 8 (vault ≥ largest outstanding outcome after every trade, all winners paid), error paths (slippage, bad outcome, over-sell, unauthorized resolve, early/double redeem), compute units |
 
 Compute: an n = 8 buy that also creates the trader's position uses about
-226k CU and an n = 8 sell about 398k CU. Clients should request 600k CU with a
+247k CU and an n = 8 sell about 435k CU (the test asserts both stay under 600k). Clients should request 600k CU with a
 `SetComputeUnitLimit` instruction (the smoke script does).
 
 To regenerate the reference vectors: `python3 scripts/vectors.py`.
@@ -100,6 +100,10 @@ WALLET=/path/outside/repo/payer.json \
 PROGRAM_KP=/path/outside/repo/program-keypair.json \
   scripts/deploy-devnet.sh          # build, deploy, then run scripts/smoke.ts
 ```
+
+A devnet deploy needs about 0.4305 SOL (program-data rent for the 84,320-byte
+build plus fees; the write buffer is refunded before program data is funded)
+and the smoke test about 0.0075 SOL more.
 
 `scripts/smoke.ts` creates a fresh 6-decimal **test** SPL mint, creates a
 3-outcome market (b = 100 tokens), buys and sells 40 shares (checking that
