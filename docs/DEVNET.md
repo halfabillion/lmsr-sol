@@ -4,10 +4,85 @@
 |---|---|
 | Program id (reserved keypair, kept outside the repo) | `7uKjZAG4m5vFd77rWD1kasKV2YwQrzSaHeeFM6a7NWsz` |
 | Payer (box wallet) | `HKJhkAZdkdNAmET7JoLHyTmDioka3CGYdajqaM31Wdgd` |
-| Program size | 85,944 bytes (program data rent ≈ 0.436 SOL; ≈ 0.9 SOL needed during deploy for the write buffer) |
-| Devnet deploy | **Pending devnet SOL**, see below |
+| Program size | 84,320 bytes (was 85,944), sha256 `249abfa22f5203a7020225ef73125c75508c7ebc49a5d023d9f25db1f6b0e91b` |
+| Devnet SOL needed | **≈ 0.4305 SOL to deploy + ≈ 0.0075 SOL for the smoke test ≈ 0.438 SOL** (details below) |
+| Devnet deploy | **Pending devnet SOL** (balance 0 on 20 Nov 2026 12:43 UK) |
+| Localnet deploy + smoke | Done 20 Nov 2026, see `docs/SMOKE_localnet.json` |
+
+## Size cut (20 Nov 2026)
+
+Release profile builds of the SBF program (`cargo build-sbf`, platform-tools v1.57):
+
+| Profile | .so bytes |
+|---|---|
+| opt-level = 3, lto = "fat", codegen-units = 1 (M1 build) | 85,944 |
+| opt-level = "s" | 89,296 |
+| opt-level = "s" + strip + panic = "abort" | 89,440 |
+| opt-level = "z" + strip + panic = "abort" | 87,056 |
+| opt-level = "z" | 85,600 |
+| opt-level = 2 | 84,616 |
+| **opt-level = "z" + formatted `msg!` replaced by `sol_log_64`** (current) | **84,320** |
+
+`cargo build-sbf` already strips the deployed `.so`; adding `strip = true` and
+`panic = "abort"` made it larger, so they are left off. `overflow-checks = true`,
+`lto = "fat"` and `codegen-units = 1` are kept. The remaining size is mostly the
+256-bit `mul_div`, `u128` division intrinsics and the instruction dispatcher.
+All 18 tests still pass; n = 8 compute units went from 226k/398k to 247k/435k
+(buy/sell), under the 600k the client requests (the test now asserts < 600k).
+
+## Devnet SOL needed (devnet rent: 5,080 lamports per byte-year, 2-year exemption)
+
+`solana rent` on devnet:
+
+| Account | Bytes | Lamports |
+|---|---|---|
+| Program data (45 + 84,320), default `--max-len` = program length | 84,365 | 429,224,440 |
+| Write buffer (37 + 84,320), refunded at deploy | 84,357 | 429,183,800 |
+| Program account | 36 | 833,120 |
+| Program data with `--max-len` = 2 × program (upgrade headroom) | 168,685 | 857,570,040 |
+| Fees: 88 transactions × 5,000 (measured on localnet) | | 440,000 |
+
+The upgradeable loader drains the buffer back to the payer **before** it funds
+the program-data account, so the buffer and the program data are never held at
+the same time. Verified on a fresh local validator: a payer funded with only
+0.5907 SOL (one program-data rent at localnet rates + program account + fees)
+deployed successfully and kept 0.00105 SOL.
+
+| Option | Peak SOL needed | Kept after deploy |
+|---|---|---|
+| **Upgradeable loader, default `--max-len` (= program length)** | **0.4305** (buffer 0.4292 + program 0.0008 + fees 0.0004) | 0.4301 locked in program data/program |
+| Upgradeable loader, `--max-len` 2 × program | 0.8588 | 0.8584 |
+| Buffer and program data held at once (naive estimate used on 19 Nov) | 0.8597 | n/a, not how the loader works |
+
+Cheapest: the default `--max-len`. A `--max-len` smaller than the program is
+not possible. Loader v4 (`solana program-v4`) is not in this CLI (agave 4.4.1).
+Note: any later upgrade of a larger build would need a new program id or an
+`extend` (more rent); this deploy is for M1 evidence.
+
+Smoke test accounts on devnet: mint 1,066,800 + token account 1,488,440 + market
+1,991,360 + vault 1,488,440 + position 1,341,120 + ~10 fees ≈ 7.5M lamports
+(0.0075 SOL). `scripts/deploy-devnet.sh` refuses to start below 0.438 SOL
+(`MIN_LAMPORTS`).
+
+## Jumpbit faucet claims
+
+The Jumpbit devnet faucet (page https://jumpbit.io/en/solana/devnet-faucet) has
+no login and no captcha. The page calls
+`POST https://api.jumpbit.io/api/v1/devnet-faucet/airdrop` with JSON
+`{"address": "<pubkey>", "amount": 0.1}`; nothing else is required, so a daily
+claim can be scripted over plain HTTP. Its stated limit is one request per
+address per day, and failed requests may count.
+
+| Time (UTC / UK) | Amount | Result | Tx | Balance after |
+|---|---|---|---|---|
+| 2026-11-20 12:42:29 UTC / 12:42 UK | 0.1 SOL requested | HTTP 503 `"The jumpbit devnet faucet is empty right now. Get test SOL from https://faucet.solana.com."` (code 5030) | none | 0 SOL |
+
+At 0.1 SOL per day, 0.438 SOL takes 5 successful daily claims, once the faucet is refilled.
 
 ## Funding blocker (19 Nov 2026)
+
+(Original 19 Nov notes. The ≈0.9 SOL figure below assumed the buffer and
+program data are held at once; the measured need is ≈0.4305 SOL, see above.)
 
 The payer has 0 devnet SOL. Free, sign-in-free funding was tried:
 
@@ -21,12 +96,15 @@ The payer has 0 devnet SOL. Free, sign-in-free funding was tried:
 Once funded: `scripts/deploy-devnet.sh` deploys with the reserved program id
 and runs the smoke test, which writes `docs/SMOKE_devnet.json`.
 
-## Local validator run
+## Local validator run (20 Nov 2026)
 
-The same program and smoke script were run against `solana-test-validator`
-(agave 4.4.1) with the program loaded at the reserved id. Signatures are in
-`docs/SMOKE_localnet.json` and the log is `docs/SMOKE_localnet_output.txt`.
-These are **localnet** signatures, not devnet.
+`solana-test-validator` 4.4.1 running in the background with its ledger at
+`/workspace/money/hackathons/solana-perps/localnet-ledger`. The 84,320-byte build
+was deployed with `solana program deploy` (upgradeable loader) to the reserved
+id, then `scripts/smoke.ts` ran create, buy, sell, buy, resolve and redeem.
+Signatures, balances and round-trip numbers are in `docs/SMOKE_localnet.json`;
+the console log is `docs/SMOKE_localnet_output.txt`. These are **localnet**
+signatures, not devnet.
 
 ## Proof-of-work faucet check (19 Nov 2026, ~21:05 UK)
 

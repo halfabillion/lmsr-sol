@@ -46,7 +46,10 @@ async function send(label: string, ix: TransactionInstruction) {
 
 async function main() {
   console.log(`cluster=${CLUSTER} program=${PROGRAM_ID.toBase58()} payer=${payer.publicKey.toBase58()}`);
-  console.log(`payer balance: ${(await conn.getBalance(payer.publicKey)) / 1e9} SOL`);
+  const solStart = await conn.getBalance(payer.publicKey);
+  const version = await conn.getVersion();
+  console.log(`validator/cluster version: ${version["solana-core"]}`);
+  console.log(`payer balance: ${solStart / 1e9} SOL`);
 
   // Test collateral: a fresh 6-decimal SPL mint controlled by the payer.
   const mint = await createMint(conn, payer, payer.publicKey, null, DECIMALS);
@@ -102,15 +105,28 @@ async function main() {
   }));
   const b4 = await bal();
   console.log(`redeemed ${b4 - b3} base units for 25 winning shares`);
+  const vaultEnd = (await getAccount(conn, vault)).amount;
+  const solEnd = await conn.getBalance(payer.publicKey);
+  const progInfo = await conn.getAccountInfo(PROGRAM_ID);
 
   const ex = (s: string, kind = "tx") =>
     `https://explorer.solana.com/${kind}/${s}${CLUSTER === "devnet" ? "?cluster=devnet" : "?cluster=custom"}`;
   const out = {
-    cluster: CLUSTER, rpc: RPC, program_id: PROGRAM_ID.toBase58(), payer: payer.publicKey.toBase58(),
+    cluster: CLUSTER, rpc: RPC, validator_version: version["solana-core"],
+    program_id: PROGRAM_ID.toBase58(), program_owner: progInfo?.owner.toBase58(), program_executable: progInfo?.executable,
+    payer: payer.publicKey.toBase58(),
     mint: mint.toBase58(), market: market.toBase58(), vault: vault.toBase58(), market_id: marketId.toString(),
     subsidy_base_units: vaultAfterCreate.toString(),
-    round_trip: { paid: (b0 - b1).toString(), got_back: (b2 - b1).toString(), net: (b2 - b0).toString() },
+    round_trip: { shares: (40n * UNIT).toString(), outcome: 0, paid: (b0 - b1).toString(), got_back: (b2 - b1).toString(), net: (b2 - b0).toString() },
     redeemed: (b4 - b3).toString(),
+    balances: {
+      payer_sol_start: solStart / 1e9, payer_sol_end: solEnd / 1e9,
+      token_base_units: {
+        minted: (10_000n * UNIT).toString(), after_create_market: b0.toString(), after_buy: b1.toString(),
+        after_sell: b2.toString(), before_redeem: b3.toString(), after_redeem: b4.toString(),
+      },
+      vault_base_units: { after_create: vaultAfterCreate.toString(), end: vaultEnd.toString() },
+    },
     signatures: sigs,
     explorer: Object.fromEntries(Object.entries(sigs).map(([l, s]) => [l, ex(s)])),
     at: new Date().toISOString(),
