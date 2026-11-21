@@ -1,6 +1,6 @@
 # lmsr-sol: submission draft (Solana Perps & Prediction Markets hackathon)
 
-Status: **DRAFT, NOT SUBMITTED.** Nothing here has been entered on the site.
+Status: **DRAFT, NOT SUBMITTED.** Repo and demo are public as of 21 Nov 2026 11:30 UK. Nothing here has been entered on the site.
 Prepared 21 Nov 2026 (UK time). Listing and form checked 21 Nov 2026 from the public pages
 `hackathons.solana.com/hackathons/perps-and-prediction-markets` (+ `/how-it-works`, `/submit` JS bundle).
 
@@ -82,9 +82,9 @@ The LMSR design and math are ported from our own open-source project github.com/
 
 | Field | Value | State |
 |---|---|---|
-| GitHub Repository | `https://github.com/halfabillion/lmsr-sol` (intended name) | **[BLANK]** until Ali/MMG approve making the repo public and it's pushed. Repo is private and local-only right now (no remote). |
+| GitHub Repository | `https://github.com/halfabillion/lmsr-sol` | Ready. Public since 21 Nov 2026 11:30 UK. |
 | Demo URL | `https://explorer.solana.com/address/7uKjZAG4m5vFd77rWD1kasKV2YwQrzSaHeeFM6a7NWsz?cluster=devnet` | Ready (public devnet explorer page). Satisfies "at least one link". |
-| Pitch Video URL | the hosted copy of `submit/demo/lmsr-sol-devnet-demo.mp4` | **[BLANK]** until it's uploaded (YouTube/Loom, unlisted) with Ali's approval. The form takes a URL, not a file. |
+| Pitch Video URL | `https://halfabillion.github.io/lmsr-sol/video.html` (plays in the browser; GitHub Pages) | Ready. Fallback: release asset `https://github.com/halfabillion/lmsr-sol/releases/download/v0.1.0-devnet/lmsr-sol-devnet-demo.mp4` (downloads). |
 | Technical Video URL | (optional) | **[BLANK]**. Not made; optional. Needs Ali to record if wanted. |
 
 Devnet transactions (all finalized; for the description or reviewer notes):
@@ -110,7 +110,7 @@ Market `5paPuX85QgseyNnsm3i8QwSi7gZicQtdHriga19W3zm4`, vault `5rS8YbVTmkZjWJPjJN
 - Rebuild: `python3 submit/demo/render_demo.py` (reads `docs/SMOKE_devnet.json` plus the explorer stills in `submit/demo-stills/`).
 - Content: title → pricing/rounding → program account → deploy → create_market → buy → sell → round-trip proof card (15,181,215 − 15,181,214 = 1) → buy outcome 2 → resolve → redeem (25,000,000) → tests → links. Includes the lmsr-fe Apache-2.0 disclosure caption.
 - Fits the "pitch video (3 min max)" slot. Not a 5-minute technical walkthrough.
-- Hosting: **[BLANK]**. Needs approval to upload (unlisted YouTube or Loom), then paste the URL into "Pitch Video URL".
+- Hosting: player page https://halfabillion.github.io/lmsr-sol/video.html ; direct mp4 https://halfabillion.github.io/lmsr-sol/submit/demo/lmsr-sol-devnet-demo.mp4 ; release asset https://github.com/halfabillion/lmsr-sol/releases/download/v0.1.0-devnet/lmsr-sol-devnet-demo.mp4 (release v0.1.0-devnet). No YouTube/Loom copy.
 
 ---
 
@@ -145,14 +145,14 @@ Market `5paPuX85QgseyNnsm3i8QwSi7gZicQtdHriga19W3zm4`, vault `5rS8YbVTmkZjWJPjJN
 
 - Built for this hackathon: the on-chain program, tests and devnet deploy are all new work. The LMSR design is ported from our own prior open-source repo lmsr-fe (Apache-2.0), and that's disclosed.
 - Live demo on devnet (allowed: "devnet or mainnet").
-- Repo public: **pending**. If the rules published at launch require a public repo, it has to be made public before 5 Dec 21:00 UK, and that needs Ali/MMG approval.
+- Repo public: **yes**, https://github.com/halfabillion/lmsr-sol (Apache-2.0).
 - Rules text is `null` on the listing today. **Recheck eligibility, judging criteria and any disclosure rules when the hackathon launches.**
 
 ---
 
-## 8. AI-disclosure answer
+## 8. Disclosure questions
 
-- **No AI-disclosure field or rule found** on the submit form or listing (checked 21 Nov 2026). Leave out unless one appears at launch. If one is added, answer it truthfully then.
+- No disclosure field or rule on the submit form or listing (checked 21 Nov 2026). If one is added at launch, answer it truthfully then.
 
 ## 9. Interested in publishing
 
@@ -163,7 +163,7 @@ Market `5paPuX85QgseyNnsm3i8QwSi7gZicQtdHriga19W3zm4`, vault `5rS8YbVTmkZjWJPjJN
 ## Before anyone submits (checklist)
 
 1. MMG rechecks the rules once `rules`/launch details are published.
-2. Approval to make `halfabillion/lmsr-sol` public (and to push it). Then fill in GitHub Repository.
-3. Approval to upload the demo (unlisted). Then fill in Pitch Video URL.
+2. ~~Make the repo public~~ done 21 Nov.
+3. ~~Host the demo~~ done 21 Nov (GitHub Pages + release asset).
 4. Confirm Ali's hackathons.solana.com username and linked wallet.
 5. Ali submits personally, or explicitly authorises submission. Use Save Draft first.

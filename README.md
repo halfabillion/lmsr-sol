@@ -13,6 +13,16 @@ never drain the maker one dust unit at a time.
 > the Rust math crate, the on-chain program, the property tests, the LiteSVM
 > integration tests and the client scripts are new.
 
+## Demo
+
+**Demo video (2:38, silent with captions):** [watch in the browser](https://halfabillion.github.io/lmsr-sol/video.html) ·
+[download the mp4](https://github.com/halfabillion/lmsr-sol/releases/download/v0.1.0-devnet/lmsr-sol-devnet-demo.mp4) (release [v0.1.0-devnet](https://github.com/halfabillion/lmsr-sol/releases/tag/v0.1.0-devnet)) ·
+in this repo at [`submit/demo/lmsr-sol-devnet-demo.mp4`](submit/demo/lmsr-sol-devnet-demo.mp4).
+
+It walks through the live devnet program
+[`7uKjZAG4m5vFd77rWD1kasKV2YwQrzSaHeeFM6a7NWsz`](https://explorer.solana.com/address/7uKjZAG4m5vFd77rWD1kasKV2YwQrzSaHeeFM6a7NWsz?cluster=devnet):
+create_market, buy, sell, the 1-base-unit round-trip proof, resolve and redeem, all on Solana Explorer.
+
 ## What it does
 
 | Instruction | Who | Effect |
