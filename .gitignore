@@ -13,3 +13,4 @@ test-ledger/
 *.pem
 .env
 !docs/SMOKE_*.json
+__pycache__/
