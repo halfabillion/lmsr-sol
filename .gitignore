@@ -14,3 +14,4 @@ test-ledger/
 .env
 !docs/SMOKE_*.json
 __pycache__/
+submit/SUBMISSION_DRAFT.md
